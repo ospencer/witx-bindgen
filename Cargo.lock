@@ -1399,6 +1399,7 @@ dependencies = [
  "quote",
  "wit-bindgen-gen-c",
  "wit-bindgen-gen-core",
+ "wit-bindgen-gen-grain",
  "wit-bindgen-gen-js",
  "wit-bindgen-gen-rust-wasm",
  "wit-bindgen-gen-spidermonkey",
@@ -2084,6 +2085,7 @@ dependencies = [
  "structopt",
  "wit-bindgen-gen-c",
  "wit-bindgen-gen-core",
+ "wit-bindgen-gen-grain",
  "wit-bindgen-gen-js",
  "wit-bindgen-gen-markdown",
  "wit-bindgen-gen-rust-wasm",
@@ -2124,6 +2126,17 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "wit-parser",
+]
+
+[[package]]
+name = "wit-bindgen-gen-grain"
+version = "0.1.0"
+dependencies = [
+ "heck 0.3.3",
+ "pulldown-cmark",
+ "structopt",
+ "test-helpers",
+ "wit-bindgen-gen-core",
 ]
 
 [[package]]

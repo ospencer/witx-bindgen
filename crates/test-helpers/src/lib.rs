@@ -310,6 +310,21 @@ pub fn codegen_py_import(input: TokenStream) -> TokenStream {
     })
 }
 
+#[cfg(feature = "wit-bindgen-gen-grain")]
+pub fn grain_import(input: TokenStream) -> TokenStream {
+    gen_verify(input, Direction::Import, "import", || {
+        wit_bindgen_gen_grain::Opts::default().build()
+    })
+}
+
+#[proc_macro]
+#[cfg(feature = "wit-bindgen-gen-grain")]
+pub fn grain_export(input: TokenStream) -> TokenStream {
+    gen_verify(input, Direction::Export, "export", || {
+        wit_bindgen_gen_grain::Opts::default().build()
+    })
+}
+
 #[proc_macro]
 #[cfg(feature = "wit-bindgen-gen-spidermonkey")]
 pub fn codegen_spidermonkey_import(input: TokenStream) -> TokenStream {

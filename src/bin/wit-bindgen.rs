@@ -42,6 +42,12 @@ enum Command {
         #[structopt(flatten)]
         common: Common,
     },
+    Grain {
+        #[structopt(flatten)]
+        opts: wit_bindgen_gen_grain::Opts,
+        #[structopt(flatten)]
+        common: Common,
+    },
     Markdown {
         #[structopt(flatten)]
         opts: wit_bindgen_gen_markdown::Opts,
@@ -82,6 +88,7 @@ fn main() -> Result<()> {
         Command::WasmtimePy { opts, common } => (Box::new(opts.build()), common),
         Command::Js { opts, common } => (Box::new(opts.build()), common),
         Command::C { opts, common } => (Box::new(opts.build()), common),
+        Command::Grain { opts, common } => (Box::new(opts.build()), common),
         Command::Markdown { opts, common } => (Box::new(opts.build()), common),
         Command::SpiderMonkey { opts, common } => {
             let js_source = std::fs::read_to_string(&opts.js)

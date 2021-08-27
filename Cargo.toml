@@ -27,6 +27,7 @@ wit-bindgen-gen-wasmtime = { path = 'crates/gen-wasmtime', features = ['structop
 wit-bindgen-gen-wasmtime-py = { path = 'crates/gen-wasmtime-py', features = ['structopt'] }
 wit-bindgen-gen-js = { path = 'crates/gen-js', features = ['structopt'] }
 wit-bindgen-gen-c = { path = 'crates/gen-c', features = ['structopt'] }
+wit-bindgen-gen-grain = { path = 'crates/gen-grain', features = ['structopt'] }
 wit-bindgen-gen-markdown = { path = 'crates/gen-markdown', features = ['structopt'] }
 wit-bindgen-gen-spidermonkey = { path = 'crates/gen-spidermonkey', features = ['structopt'] }
 
