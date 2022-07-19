@@ -419,6 +419,11 @@ impl Generator for Grain {
                 | TypeDefKind::Tuple(_)
                 | TypeDefKind::Option(_)
                 | TypeDefKind::Expected(_) => {
+                    if is_first {
+                        is_first = false
+                    } else {
+                        self.src.push_str(",\n");
+                    }
                     let typename = name.to_camel_case();
                     self.src.push_str(&format!("\nexport type {typename} = "));
                     self.print_tydef(iface, &ty.kind);
