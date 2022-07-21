@@ -344,6 +344,24 @@ impl Generator for Grain {
             ));
         }
 
+        full_src.push_str("@unsafe\n");
+        full_src.push_str("export let canonical_abi_realloc = (ptr: WasmI32, size: WasmI32, align: WasmI32, newSize: WasmI32) => {\n");
+        full_src.push_str("let ret = Memory.malloc(newSize)\n");
+        full_src.push_str("let copyAmount = if (WasmI32.gtU(size, newSize)) newSize else size\n");
+        full_src.push_str("if (WasmI32.ne(ptr, 0n)) {\n");
+        full_src.push_str("Memory.copy(ret, ptr, copyAmount)\n");
+        full_src.push_str("Memory.free(ptr)\n");
+        full_src.push_str("}\n");
+        full_src.push_str("ret\n");
+        full_src.push_str("}\n\n");
+
+        full_src.push_str("@unsafe\n");
+        full_src.push_str(
+            "export let canonical_abi_free = (ptr: WasmI32, size: WasmI32, align: WasmI32) => {\n",
+        );
+        full_src.push_str("Memory.free(ptr)\n");
+        full_src.push_str("}\n\n");
+
         full_src.push_str(self.src.as_mut_string());
 
         files.push("bindings.gr", full_src.as_bytes());
